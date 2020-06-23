@@ -14,6 +14,7 @@ Run the following command and replace the items in <> with your values prior to 
 
 ```shell
 export BOOTSTRAP_SERVERS=<your-bootstrap-server> \ 
+export TOPIC_NAME-<your-topic-name> \
 export API_KEY=<your-api-key> \
 export CERT_LOCATION=<path-to-truststorefile/es-cert.jks>
 ```
