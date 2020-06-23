@@ -39,6 +39,7 @@ public class TradeEnrichment {
             and lastly APIC.
             */
             receivedMessage.trade_enrichment = false;
+            receivedMessage.business_validation = true;
 
             return Flowable.just(receivedMessage);
         }
