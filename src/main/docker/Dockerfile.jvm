@@ -11,14 +11,14 @@
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/cp4i-financial-trade-ms-jvm
+# docker run -i --rm -p 8083:8083 quarkus/cp4i-financial-trade-ms-jvm
 #
 # If you want to include the debug port into your docker image
 # you will have to expose the debug port (default 5005) like this :  EXPOSE 8080 5050
 # 
 # Then run the container using : 
 #
-# docker run -i --rm -p 8080:8080 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/cp4i-financial-trade-ms-jvm
+# docker run -i --rm -p 8083:8083 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/cp4i-financial-trade-ms-jvm
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.1
@@ -47,8 +47,9 @@ ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jb
 
 COPY target/lib/* /deployments/lib/
 COPY target/*-runner.jar /deployments/app.jar
+COPY src/main/resources/ssl/es-cert.jks /work/ssl
 
-EXPOSE 8080
+EXPOSE 8083
 USER 1001
 
 ENTRYPOINT [ "/deployments/run-java.sh" ]
