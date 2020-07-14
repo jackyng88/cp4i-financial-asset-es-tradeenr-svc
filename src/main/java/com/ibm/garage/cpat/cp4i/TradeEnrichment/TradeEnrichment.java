@@ -30,7 +30,8 @@ public class TradeEnrichment {
 
         LOGGER.info("Message received from topic = {}", receivedMessage);
 
-        if (receivedMessage.trade_enrichment && !receivedMessage.schema_validation) {
+        if (receivedMessage.trade_enrichment && !receivedMessage.schema_validation && 
+            !receivedMessage.technical_validation && !receivedMessage.compliance_services) {
             /*
             Check whether trade_enrichment is true as well as if business (previous) is false. If so 
             it's ready to be processed. We flip the boolean value to indicate that this service has processed it.
@@ -38,8 +39,11 @@ public class TradeEnrichment {
             and lastly APIC.
             */
             receivedMessage.trade_enrichment = false;
-            //receivedMessage.business_validation = true;
 
+            if (!receivedMessage.business_validation) {
+                receivedMessage.business_validation = true;
+            }
+            
             return Flowable.just(receivedMessage);
         }
 

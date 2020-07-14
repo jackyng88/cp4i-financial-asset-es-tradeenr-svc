@@ -2,7 +2,7 @@ package com.ibm.garage.cpat.cp4i.FinancialMessage;
 
 public class FinancialMessage {
     
-    public int user_id;
+    public String user_id;
     public String stock_symbol;
     public String exchange_id;
     public String trade_type;
@@ -24,7 +24,7 @@ public class FinancialMessage {
 
     }
 
-    public FinancialMessage(int user_id, String stock_symbol, String exchange_id, String trade_type, 
+    public FinancialMessage(String user_id, String stock_symbol, String exchange_id, String trade_type, 
                             String date_created, String date_submitted, int quantity, double stock_price,
                             double total_cost, int institution_id, int country_id, 
                             boolean compliance_services, boolean technical_validation, boolean schema_validation,
